@@ -3,7 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title" style="display: inline-block">账号信息</h3>
-        <a href="#" v-on:click="refresh" style="float: right"><i class="glyphicon glyphicon-refresh"></i></a>
+        <a v-on:click="refresh" style="float: right"><i class="glyphicon glyphicon-refresh"></i></a>
       </div>
       <div class="panel-body">
         Name: {{accountInfo.name}} <br />

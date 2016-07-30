@@ -7,7 +7,7 @@
       <a v-if="item.link" v-link="{path: item.link}">{{item.name}}</a>
       <span v-else>{{item.name}}</span>
     </li>
-    <a href="#" v-on:click="refresh" style="float: right"><i class="glyphicon glyphicon-refresh"></i></a>
+    <a v-on:click="refresh" style="float: right"><i class="glyphicon glyphicon-refresh"></i></a>
   </ol>
 </template>
 
