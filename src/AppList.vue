@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import jQuery from 'jquery'
+import Ajax from './libs/ajax'
 import Navigator from './components/Navigator'
 export default {
   components: {
@@ -41,13 +41,8 @@ export default {
   },
   methods: {
     refresh () {
-      jQuery.ajax({
-        url: '/api/AppList.json',
-        type: 'get',
-        dataType: 'json',
-        success: (data) => {
-          this.$set('apps', data)
-        }
+      Ajax.getAppList((err, data) => {
+        !err && this.$set('apps', data)
       })
     }
   }

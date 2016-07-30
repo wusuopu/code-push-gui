@@ -31,5 +31,47 @@ export default {
         }
       )
     }
+  },
+  getAppList (cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/AppList.json', cb)
+    } else {
+      window.codePush.getAccoutInfo().done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
+  },
+  getApp (name, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/apps/' + name + '.json', cb)
+    } else {
+      window.codePush.getApp(name).done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
+  },
+  getDeployments (appName, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/apps/' + appName + '/deployments/index.json', cb)
+    } else {
+      window.codePush.getDeployments(appName).done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
   }
 }
