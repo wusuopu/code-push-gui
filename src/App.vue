@@ -38,6 +38,7 @@
             <td>name</td>
             <td>key</td>
             <td>createdTime</td>
+            <td>package</td>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +52,13 @@
             <td>
               {{new Date(item.createdTime).toJSON()}}
             </td>
+            <td>
+              <div v-if="item.package">
+                Lable: {{item.package.label}} <br />
+                AppVersion: {{item.package.appVersion}} <br />
+                uploadTime: {{new Date(item.package.uploadTime).toJSON()}}
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -59,6 +67,7 @@
 </template>
 
 <script>
+import async from 'async'
 import Ajax from './libs/ajax'
 import Navigator from './components/Navigator'
 export default {
@@ -77,13 +86,18 @@ export default {
   },
   methods: {
     refresh () {
-      Ajax.getApp(this.$route.params.id, (err, data) => {
-        if (!err) {
-          this.$set('app', data)
-          Ajax.getDeployments(this.$route.params.id, (err, deployments) => {
-            !err && this.$set('deployments', deployments)
-          })
+      async.waterfall([
+        (next) => {
+          Ajax.getApp(this.$route.params.id, next)
+        },
+        (app, next) => {
+          this.$set('app', app)
+          Ajax.getDeployments(this.$route.params.id, next)
+        },
+        (deployments, next) => {
+          this.$set('deployments', deployments)
         }
+      ], () => {
       })
     }
   }

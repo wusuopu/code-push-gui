@@ -18,11 +18,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default {
-  getAccoutInfo (cb) {
+  getAccountInfo (cb) {
     if (process.env.NODE_ENV === 'development') {
       request('/api/AccountInfo.json', cb)
     } else {
-      window.codePush.getAccoutInfo().done(
+      window.codePush.getAccountInfo().done(
         (data) => {
           cb(null, data)
         },
@@ -36,7 +36,7 @@ export default {
     if (process.env.NODE_ENV === 'development') {
       request('/api/AppList.json', cb)
     } else {
-      window.codePush.getAccoutInfo().done(
+      window.codePush.getApps().done(
         (data) => {
           cb(null, data)
         },
@@ -65,6 +65,48 @@ export default {
       request('/api/apps/' + appName + '/deployments/index.json', cb)
     } else {
       window.codePush.getDeployments(appName).done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
+  },
+  getDeployment (appName, deployment, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/apps/' + appName + '/deployments/' + deployment + '/index.json', cb)
+    } else {
+      window.codePush.getDeployment(appName, deployment).done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
+  },
+  getDeploymentMetrics (appName, deployment, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/apps/' + appName + '/deployments/' + deployment + '/Metrics.json', cb)
+    } else {
+      window.codePush.getDeploymentMetrics(appName, deployment).done(
+        (data) => {
+          cb(null, data)
+        },
+        (err) => {
+          cb(err)
+        }
+      )
+    }
+  },
+  getDeploymentHistory (appName, deployment, cb) {
+    if (process.env.NODE_ENV === 'development') {
+      request('/api/apps/' + appName + '/deployments/' + deployment + '/History.json', cb)
+    } else {
+      window.codePush.getDeploymentHistory(appName, deployment).done(
         (data) => {
           cb(null, data)
         },

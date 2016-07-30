@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Home from './Home'
 import AppList from './AppList'
 import App from './App'
+import Deployment from './Deployment'
 import VueRouter from 'vue-router'
 
 /* eslint-disable no-new */
@@ -20,6 +21,9 @@ router.map({
       },
       '/apps/:id': {
         component: App
+      },
+      '/apps/:app/:deployment': {
+        component: Deployment
       }
     }
   }

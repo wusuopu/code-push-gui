@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     refresh () {
-      Ajax.getAccoutInfo((err, data) => {
+      Ajax.getAccountInfo((err, data) => {
         !err && this.$set('accountInfo', data)
       })
     }
