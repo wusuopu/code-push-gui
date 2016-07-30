@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Demo",
+    "collaborators": {
+      "wosuopu@gmail.com": {
+        "isCurrentAccount": true,
+        "permission": "Owner"
+      }
+    },
+    "deployments": [
+      "Default"
+    ]
+  },
+  {
+    "name": "KidooThermometer",
+    "collaborators": {
+      "huaming.rao@gmail.com": {
+        "permission": "Collaborator"
+      },
+      "wosuopu@gmail.com": {
+        "isCurrentAccount": true,
+        "permission": "Owner"
+      }
+    },
+    "deployments": [
+      "Default",
+      "Production",
+      "Staging"
+    ]
+  }
+]

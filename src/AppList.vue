@@ -1,40 +1,55 @@
 <template>
-  <div id="main" class="container">
-    <ol class="breadcrumb">
-      <li>
-        <a class="active" href="#">应用列表</a>
-      </li>
-    </ol>
+  <navigator :refresh="refresh"></navigator>
 
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Deployments</td>
-        </tr>
-      </thead>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Deployments</td>
+      </tr>
+    </thead>
 
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <tbody>
+      <tr v-for="(index, item) in apps">
+        <td>
+          <a v-link="{path: '/apps/' + item.name}">{{item.name}}</a>
+        </td>
+        <td>
+          <a v-for="(index, deployment) in item.deployments" v-link="{path: '/apps/' + item.name + '/' + deployment}">
+            {{deployment}}
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
+import jQuery from 'jquery'
+import Navigator from './components/Navigator'
 export default {
   components: {
+    Navigator
+  },
+  data () {
+    return {
+      apps: []
+    }
+  },
+  ready () {
+    this.refresh()
+  },
+  methods: {
+    refresh () {
+      jQuery.ajax({
+        url: '/api/AppList.json',
+        type: 'get',
+        dataType: 'json',
+        success: (data) => {
+          this.$set('apps', data)
+        }
+      })
+    }
   }
 }
 </script>
-
-<style lang="scss">
-@import "~bootstrap/dist/css/bootstrap.min.css";
-
-#app {
-  margin-top: 100px;
-}
-</style>

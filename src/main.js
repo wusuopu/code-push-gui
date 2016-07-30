@@ -1,20 +1,27 @@
 import Vue from 'vue'
+import Home from './Home'
 import AppList from './AppList'
 import App from './App'
 import VueRouter from 'vue-router'
-window.$ = window.jQuery = require('jquery')
 
 /* eslint-disable no-new */
 
 Vue.use(VueRouter)
 
-let router = new VueRouter()
+let router = new VueRouter({
+  linkActiveClass: 'active'
+})
 router.map({
-  '/apps': {
-    component: AppList
-  },
-  '/apps/:id': {
-    component: App
+  '/': {
+    component: Home,
+    subRoutes: {
+      '/apps': {
+        component: AppList
+      },
+      '/apps/:id': {
+        component: App
+      }
+    }
   }
 })
 router.redirect({
