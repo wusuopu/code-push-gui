@@ -32,7 +32,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "~bootstrap/dist/css/bootstrap.min.css";
 html {
   height: 100%;
 }
