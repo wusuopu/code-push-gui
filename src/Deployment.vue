@@ -12,6 +12,7 @@
             <td>Label</td>
             <td>Time</td>
             <td>AppVersion</td>
+            <td>Size</td>
             <td>Mandatory</td>
             <td>Description</td>
             <td>Install Metrics</td>
@@ -22,6 +23,7 @@
             <td>{{h.label}}</td>
             <td>{{new Date(h.uploadTime).toJSON()}}</td>
             <td>{{h.appVersion}}</td>
+            <td>{{h.size}}</td>
             <td>{{h.isMandatory}}</td>
             <td>{{h.description}}</td>
             <td>
