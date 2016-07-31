@@ -26,10 +26,10 @@
             <td>{{h.description}}</td>
             <td>
               <div v-if="metrics[h.label]">
-                {{metrics[h.label].active}}
-                {{metrics[h.label].downloaded}}
-                {{metrics[h.label].failed}}
-                {{metrics[h.label].installed}}
+                active: {{metrics[h.label].active}} <br />
+                downloaded: {{metrics[h.label].downloaded}} <br />
+                failed: {{metrics[h.label].failed}} <br />
+                installed: {{metrics[h.label].installed}} <br />
               </div>
               <div v-else>
                 No installs recorded
