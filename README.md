@@ -1,27 +1,12 @@
 # code-push-gui
 
-> A Vue.js project
+使用 Electron + Vue.js 开发的一个 CodePush 的简易管理工具
 
-## Build Setup
+## 使用方法
 
-``` bash
-# install dependencies
+```
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
 npm run build
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+npm start
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
