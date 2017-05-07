@@ -3,10 +3,10 @@ var CodePush = require('code-push');
 
 let codePushConfig;
 try {
-  codePushConfig = JSON.parse( fs.readFileSync(`${process.env.HOME}/.code-push.config`) );
+  codePushConfig = JSON.parse( fs.readFileSync(`${process.env.LOCALAPPDATA || process.env.HOME}/.code-push.config`) );
 } catch (e) {
   console.error('[JSON parse]: ', e);
   codePushConfig = {};
 }
 
-module.exports = new CodePush(codePushConfig.accessKeyName);
+module.exports = new CodePush(codePushConfig.accessKey);
